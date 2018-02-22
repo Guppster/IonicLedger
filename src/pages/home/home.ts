@@ -11,4 +11,14 @@ export class HomePage {
 
   }
 
+  init() {
+  window['cordova']['plugins']['ledger']['init'](
+      (result) => {
+        console.log(result)
+      },
+      (error) => {
+        console.log(error)
+      }
+    );
+  }
 }
