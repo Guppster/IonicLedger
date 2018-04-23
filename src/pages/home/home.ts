@@ -2,26 +2,27 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
 @Component({
-  selector: 'page-home',
-  templateUrl: 'home.html'
+    selector: 'page-home',
+    templateUrl: 'home.html'
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController) {
-  }
+    constructor(public navCtrl: NavController) {
+    }
 
-  testprint(){
-      alert("works");
-  }
-  init() {
-      window['cordova']['plugins']['ledger']['init'](
-        (result) => {
-        alert(result);
-        alert("all good mane");
-        },
-        (error) => {
-        alert("bad");
-        }
-    );
-  }
+    testprint(){
+        alert("UI Testing!!~~");
+    }
+
+    init() {
+        window['cordova']['plugins']['ledger']['init'](
+            (result) => {
+                console.log('Java code connected and result recieved')
+                alert(result);
+            },
+            (error) => {
+                alert(error);
+            }
+        );
+    }
 }
