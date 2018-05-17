@@ -4,6 +4,9 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
+
+declare var ledgerPlugin: any;
+
 @Component({
   templateUrl: 'app.html'
 })
@@ -16,6 +19,17 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
       splashScreen.hide();
+      var ledger = new ledgerPlugin();
+
+        ledger.init(  
+            (result) => {
+                console.log('Java code connected and result recieved')
+                alert(result);
+            },
+            (error) => {
+                alert(error);
+                console.log('VERY BAD')
+            });
     });
   }
 }
